@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/registration_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:hint="@string/login"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/registration_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/registration_login"
+        android:layout_below="@+id/registration_login"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+
+    <EditText
+        android:id="@+id/registration_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/registration_password"
+        android:layout_below="@+id/registration_password"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/confirm"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/registration_sing_up"
+        android:onClick="signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/registration_back"
+        android:layout_alignBottom="@+id/registration_back"
+        android:layout_alignEnd="@+id/registration_confirm"
+        android:text="@string/sing_up" />
+
+    <Button
+        android:id="@+id/registration_back"
+        android:onClick="stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/registration_confirm"
+        android:layout_below="@+id/registration_confirm"
+        android:layout_marginTop="23dp"
+        android:text="@string/login" />
+</RelativeLayout>

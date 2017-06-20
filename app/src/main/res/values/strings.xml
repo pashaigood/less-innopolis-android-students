@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Students</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_login">Login</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="sing_in">Sing In</string>
+    <string name="sing_up">Sing Up</string>
+    <string name="confirm">Confirm</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/login_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:hint="@string/login"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/login_login"
+        android:layout_below="@+id/login_login"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login_sing_in"
+        android:onClick="signIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sing_in"
+        android:layout_below="@+id/login_password"
+        android:layout_alignStart="@+id/login_password"
+        android:layout_marginTop="23dp" />
+
+    <Button
+        android:id="@+id/login_sign_up"
+        android:onClick="signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sing_up"
+        android:layout_alignBaseline="@+id/login_sing_in"
+        android:layout_alignBottom="@+id/login_sing_in"
+        android:layout_alignEnd="@+id/login_password" />
+
+</RelativeLayout>
