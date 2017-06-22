@@ -11,7 +11,6 @@ import android.view.View;
 import java.util.ArrayList;
 
 import innopolis.less.registration.R;
-import innopolis.less.registration.StudentActivity;
 import innopolis.less.registration.adapters.GroupListAdapter;
 import innopolis.less.registration.models.Group;
 

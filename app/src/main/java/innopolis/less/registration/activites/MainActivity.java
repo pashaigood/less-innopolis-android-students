@@ -1,11 +1,10 @@
-package innopolis.less.registration;
+package innopolis.less.registration.activites;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import innopolis.less.registration.activites.GroupsActivity;
 import innopolis.less.registration.collections.Users;
 
 public class MainActivity extends AppCompatActivity {

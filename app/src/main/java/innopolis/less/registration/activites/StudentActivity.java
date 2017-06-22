@@ -1,6 +1,5 @@
-package innopolis.less.registration;
+package innopolis.less.registration.activites;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import innopolis.less.registration.R;
 import innopolis.less.registration.adapters.JournalListAdapter;
 import innopolis.less.registration.models.Journal;
 

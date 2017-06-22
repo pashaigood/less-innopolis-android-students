@@ -1,4 +1,4 @@
-package innopolis.less.registration;
+package innopolis.less.registration.activites;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import innopolis.less.registration.R;
 import innopolis.less.registration.collections.Users;
 
 public class RegistrationActivity extends AppCompatActivity {
