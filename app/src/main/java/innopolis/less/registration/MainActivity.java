@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void start() {
-        setContentView(R.layout.activity_main);
+        startActivity(new Intent(this, StudentActivity.class));
     }
 
     private void showLogin() {
