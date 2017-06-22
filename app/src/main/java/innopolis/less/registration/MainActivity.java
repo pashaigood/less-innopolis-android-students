@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import innopolis.less.registration.activites.GroupsActivity;
 import innopolis.less.registration.collections.Users;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void start() {
-        startActivity(new Intent(this, StudentActivity.class));
+        startActivity(new Intent(this, GroupsActivity.class));
     }
 
     private void showLogin() {

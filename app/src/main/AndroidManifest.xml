@@ -36,6 +36,11 @@
             android:label="@string/title_activity_student"
             >
         </activity>
+        <activity
+            android:name=".activites.GroupsActivity"
+            android:label="@string/title_activity_students"
+            >
+        </activity>
     </application>
 
 </manifest>
