@@ -1,8 +1,9 @@
 package innopolis.less.registration.collections;
 
 import innopolis.less.registration.factories.ModelsCollection;
+import innopolis.less.registration.models.Student;
 
-public class Students extends ModelsCollection {
+public class Students extends ModelsCollection<Student> {
     private static Students ourInstance = new Students();
     public static Students getInstance() {
         return ourInstance;
