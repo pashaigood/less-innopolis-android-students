@@ -45,24 +45,4 @@ public class Journal {
 
         return ((Journal) obj).getId().equals(id);
     }
-
-    private boolean isPresented() {
-        return present;
-    }
-
-    public Long getLessonId() {
-        return lessonId;
-    }
-
-    public void setLessonId(Long lessonId) {
-        this.lessonId = lessonId;
-    }
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
 }

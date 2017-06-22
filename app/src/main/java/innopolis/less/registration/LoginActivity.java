@@ -44,4 +44,13 @@ public class LoginActivity extends AppCompatActivity {
     public void signUp(View view) {
         startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
     }
+
+
+    // TODO: Temporary :)
+    public void forceSingIn(View view) {
+        Users.auth("admin", "admin");
+        Intent resultIntent = new Intent();
+        setResult(Activity.RESULT_OK, resultIntent);
+        finish();
+    }
 }

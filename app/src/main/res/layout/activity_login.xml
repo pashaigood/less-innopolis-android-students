@@ -44,4 +44,15 @@
         android:layout_alignBottom="@+id/login_sing_in"
         android:layout_alignEnd="@+id/login_password" />
 
+    <Button
+        android:onClick="forceSingIn"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="I am god guy"
+        android:layout_below="@+id/login_sing_in"
+        android:layout_alignStart="@+id/login_sing_in"
+        android:layout_alignEnd="@+id/login_sign_up" />
+
 </RelativeLayout>

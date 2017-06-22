@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import innopolis.less.registration.utils.Generator;
+import innopolis.less.registration.factories.Model;
 
-public class Student implements Serializable {
-    private final Long id = Generator.generateId();
+public class Student extends Model implements Serializable {
     private String firstName;
     private String surename;
     private String secondName;
@@ -24,10 +23,6 @@ public class Student implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.groupId = groupId;
         this.contacts = new ArrayList<>();
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getFirstName() {
@@ -72,22 +67,5 @@ public class Student implements Serializable {
 
     public List<Contact> getContacts() {
         return contacts;
-    }
-
-    @Override
-    public int hashCode() {
-        return (int)(21+id*42);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (!(obj instanceof Student)) {
-            return false;
-        }
-
-        return ((Student) obj).getId().equals(this.id);
     }
 }

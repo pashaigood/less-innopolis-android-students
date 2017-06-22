@@ -3,6 +3,7 @@ package innopolis.less.registration;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import innopolis.less.registration.adapters.JournalListAdapter;
 import innopolis.less.registration.models.Journal;
 
-public class StudentActivity extends Activity {
+public class StudentActivity extends AppCompatActivity {
 
     private ListView listJournal;
 
@@ -29,7 +30,7 @@ public class StudentActivity extends Activity {
     }
 
     private void initContacts() {
-        ListView listContacts = findViewById(R.id.contacts);
+        ListView listContacts = (ListView) findViewById(R.id.contacts);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, new String[] {
                 "+7 926 123 456 78 78",

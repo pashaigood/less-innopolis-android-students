@@ -14,6 +14,7 @@ import innopolis.less.registration.models.Group;
 public class GroupListAdapter extends RecyclerView.Adapter {
 
     private final List<Group> groups;
+    private View.OnClickListener itemClickListener;
 
     public GroupListAdapter(List<Group> groups) {
         this.groups = groups;
@@ -50,6 +51,14 @@ public class GroupListAdapter extends RecyclerView.Adapter {
         delete(position);
     }
 
+    public void startGroup(View view, Group group) {
+        itemClickListener.onClick(view);
+    }
+
+    public void onItemClickListener(View.OnClickListener clickListener) {
+        this.itemClickListener = clickListener;
+    }
+
     private class GroupHolder extends RecyclerView.ViewHolder {
 
         private final TextView groupName;
@@ -61,7 +70,7 @@ public class GroupListAdapter extends RecyclerView.Adapter {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    delete(group);
+                    startGroup(view, group);
                 }
             });
         }

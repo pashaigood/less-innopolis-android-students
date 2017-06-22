@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Users {
     private static HashMap<String, String> collection = new HashMap<>();
-    private static boolean isAuthorized = true;
+    private static boolean isAuthorized = false;
 
     static {
         collection.put("admin", "admin");

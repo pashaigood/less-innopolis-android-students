@@ -1,6 +1,5 @@
 package innopolis.less.registration.models;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
