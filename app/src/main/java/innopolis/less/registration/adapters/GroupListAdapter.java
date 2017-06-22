@@ -9,15 +9,15 @@ import android.widget.TextView;
 import java.util.List;
 
 import innopolis.less.registration.R;
+import innopolis.less.registration.collections.Groups;
 import innopolis.less.registration.models.Group;
 
 public class GroupListAdapter extends RecyclerView.Adapter {
-
-    private final List<Group> groups;
+    private final Groups groups;
     private View.OnClickListener itemClickListener;
 
     public GroupListAdapter(List<Group> groups) {
-        this.groups = groups;
+        this.groups = Groups.getInstance();
     }
 
     @Override
@@ -28,7 +28,7 @@ public class GroupListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((GroupHolder) holder).bind(groups.get(position));
+        ((GroupHolder) holder).bind((Group) groups.get(position));
     }
 
     @Override
@@ -38,7 +38,7 @@ public class GroupListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return groups.size();
+        return groups.count();
     }
 
     public void delete(int position) {

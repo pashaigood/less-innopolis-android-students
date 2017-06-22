@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import innopolis.less.registration.interfaces.ISerializer;
 
-public class ByteSerializer extends ArrayList implements ISerializer {
+public class ByteSerializer<T> extends ArrayList<T> implements ISerializer {
     static private String PATH_TO_COLLECTION = "./resources/collections/byte/";
     protected String FILE_NAME;
 

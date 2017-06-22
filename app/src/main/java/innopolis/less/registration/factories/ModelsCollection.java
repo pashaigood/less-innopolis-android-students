@@ -6,16 +6,16 @@ import java.util.Iterator;
 import innopolis.less.registration.interfaces.ICollection;
 
 // TODO: Make tests.
-public class ModelsCollection extends ByteSerializer implements ICollection {
+public class ModelsCollection<T extends Model> extends ByteSerializer<T> implements ICollection {
     @Override
     public void create(Model object) {
-        add(object);
+        add((T) object);
     }
 
     @Override
-    public Model read(long id) {
-        Iterator<Model> iterator = this.iterator();
-        Model model;
+    public T read(long id) {
+        Iterator<T> iterator = this.iterator();
+        T model;
         while (iterator.hasNext()) {
             model = iterator.next();
             if (model.getId() == id) {
@@ -30,7 +30,7 @@ public class ModelsCollection extends ByteSerializer implements ICollection {
     public void update(Model object) {
         int index  = indexOf(object);
         remove(index);
-        add(index, object);
+        add(index, (T) object);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ModelsCollection extends ByteSerializer implements ICollection {
     }
 
     @Override
-    public long count() {
+    public int count() {
         return super.size();
     }
 
