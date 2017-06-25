@@ -1,6 +1,6 @@
 package innopolis.less.registration.collections;
 
-import innopolis.less.registration.factories.ModelsCollection;
+import innopolis.less.db.ModelsCollection;
 import innopolis.less.registration.models.Student;
 
 public class Students extends ModelsCollection<Student> {

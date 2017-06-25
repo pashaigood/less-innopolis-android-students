@@ -1,4 +1,4 @@
-package innopolis.less.registration.factories;
+package innopolis.less.db.serializers;
 
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;

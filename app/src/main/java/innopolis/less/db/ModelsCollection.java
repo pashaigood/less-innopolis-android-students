@@ -1,9 +1,10 @@
-package innopolis.less.registration.factories;
+package innopolis.less.db;
 
 
 import java.util.Iterator;
 
-import innopolis.less.registration.interfaces.ICollection;
+import innopolis.less.db.serializers.ByteSerializer;
+import innopolis.less.db.interfaces.ICollection;
 
 // TODO: Make tests.
 public class ModelsCollection<T extends Model> extends ByteSerializer<T> implements ICollection {
@@ -23,6 +24,11 @@ public class ModelsCollection<T extends Model> extends ByteSerializer<T> impleme
             }
         }
 
+        return null;
+    }
+
+    @Override
+    public T find(SearchModel searchModel) {
         return null;
     }
 

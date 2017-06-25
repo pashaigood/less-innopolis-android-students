@@ -1,13 +1,12 @@
 package innopolis.less.registration.models;
 
 
-import innopolis.less.registration.utils.Generator;
+import innopolis.less.db.Model;
 
-public class Journal {
+public class Journal extends Model {
     public static boolean PRESENTED = true;
     public static boolean NOT_PRESENTED = false;
 
-    private Long id = Generator.generateId();
     private Long lessonId;
     private Long studentId;
     private boolean present;
@@ -18,31 +17,10 @@ public class Journal {
     }
 
     public boolean isPresent() {
-        return present;
+        return present == PRESENTED;
     }
 
     public void setPresent(boolean present) {
         this.present = present;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Generator.generateHash(id);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (!(obj instanceof Journal)) {
-            return false;
-        }
-
-        return ((Journal) obj).getId().equals(id);
     }
 }

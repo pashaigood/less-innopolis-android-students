@@ -41,7 +41,7 @@ public class JournalListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (view == null) {
-            view = inflater.inflate(R.layout.partial_journal_item, viewGroup, false);
+            view = inflater.inflate(R.layout.item_journal, viewGroup, false);
         }
 
         TextView pupil = (TextView) view.findViewById(R.id.pupil);

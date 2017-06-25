@@ -1,6 +1,6 @@
 package innopolis.less.registration.collections;
 
-import innopolis.less.registration.factories.ModelsCollection;
+import innopolis.less.db.ModelsCollection;
 import innopolis.less.registration.models.Group;
 
 public class Groups extends ModelsCollection<Group> {

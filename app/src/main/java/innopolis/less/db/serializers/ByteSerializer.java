@@ -1,4 +1,4 @@
-package innopolis.less.registration.factories;
+package innopolis.less.db.serializers;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import innopolis.less.registration.interfaces.ISerializer;
+import innopolis.less.db.interfaces.ISerializer;
 
 public class ByteSerializer<T> extends ArrayList<T> implements ISerializer {
     static private String PATH_TO_COLLECTION = "./resources/collections/byte/";

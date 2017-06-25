@@ -1,6 +1,8 @@
 package innopolis.less.registration.models;
 
-public class Contact {
+import innopolis.less.db.Model;
+
+public class Contact extends Model {
     private ContactType type;
     private String value;
 
@@ -23,22 +25,5 @@ public class Contact {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    @Override
-    public int hashCode() {
-        return (21+value.hashCode()*41) + (21+type.hashCode()*41);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (!(obj instanceof Contact)) {
-            return false;
-        }
-
-        return ((Contact) obj).getValue().equals(value) && ((Contact) obj).getType().equals(type);
     }
 }

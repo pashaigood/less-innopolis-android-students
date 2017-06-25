@@ -1,4 +1,4 @@
-package innopolis.less.registration.utils;
+package innopolis.less.db.utils;
 
 public class Generator {
     public static Long generateId() {

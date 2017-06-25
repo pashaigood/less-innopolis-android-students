@@ -1,6 +1,6 @@
-package innopolis.less.registration.factories;
+package innopolis.less.db;
 
-import innopolis.less.registration.utils.Generator;
+import innopolis.less.db.utils.Generator;
 
 public class Model {
     private final Long id = Generator.generateId();

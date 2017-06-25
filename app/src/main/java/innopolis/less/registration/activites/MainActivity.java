@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import innopolis.less.registration.collections.Groups;
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         else {
             showLogin();
         }
-        System.out.println("result");
     }
 
     private void start() {
@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
         groups.create(new Group("Frontend"));
 
         Students students = Students.getInstance();
-        students.create(new Student("Pavel", "Belugin", "Andreevich", new Date(90, 9, 30), ((Group) groups.get(0)).getId()));
-        students.create(new Student("Artomonow", "Sergey", "Victorovich", new Date(85, 10, 20), ((Group) groups.get(0)).getId()));
-        students.create(new Student("Borisow", "Vladimir", "Dmitreevich", new Date(54, 1, 12), ((Group) groups.get(0)).getId()));
+        students.create(new Student("Pavel", "Belugin", "Andreevich", new Date(90, Calendar.SEPTEMBER, 30), (groups.get(0)).getId()));
+        students.create(new Student("Artomonow", "Sergey", "Victorovich", new Date(85, Calendar.OCTOBER, 20), (groups.get(0)).getId()));
+        students.create(new Student("Borisow", "Vladimir", "Dmitreevich", new Date(54, Calendar.JANUARY, 12), (groups.get(0)).getId()));
     }
 
     private void showLogin() {

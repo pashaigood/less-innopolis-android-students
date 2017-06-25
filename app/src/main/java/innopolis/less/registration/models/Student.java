@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import innopolis.less.registration.factories.Model;
+import innopolis.less.db.Model;
 
 public class Student extends Model implements Serializable {
     private String firstName;
