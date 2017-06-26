@@ -51,17 +51,21 @@ public class ModelsCollection<T extends Model> extends ByteSerializer<T> impleme
                 }
 
                 searchField.setAccessible(true);
-                Field modelField;
-                try {
-                    modelField = model.getClass().getDeclaredField(searchField.getName());
-                    if (! isFieldsEquals(modelField, model, searchField, searchModel)) {
-                        continue search;
+                Field modelField = null;
+                Class modelClass = model.getClass();
+                do {
+                    try {
+                        modelField = modelClass.getDeclaredField(searchField.getName());
+                    } catch (NoSuchFieldException e) {
+//                        e.printStackTrace();
                     }
-                } catch (NoSuchFieldException e) {
-//                     e.printStackTrace();
-                    // If don't has a field, go to next model.
+                }
+                while (modelField == null && (modelClass = modelClass.getSuperclass()) != null);
+
+                if (modelField == null || ! isFieldsEquals(modelField, model, searchField, searchModel)) {
                     continue search;
                 }
+
             }
 
             result.add(model);
