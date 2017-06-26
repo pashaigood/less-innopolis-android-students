@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DataFiller.fill();
         if (! Users.isAuthorized()) {
             showLogin();
         } else {
@@ -33,11 +34,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void start() {
-        DataFiller.fill();
         startActivity(new Intent(this, GroupsActivity.class));
     }
-
-
 
     private void showLogin() {
         Intent loginActivity = new Intent(this, LoginActivity.class);

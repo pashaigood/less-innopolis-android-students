@@ -1,24 +1,29 @@
 package innopolis.less.registration.models;
 
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import innopolis.less.db.Model;
+import innopolis.less.registration.constants.UserGroup;
 
-public class Student extends Model implements Serializable {
+public class Student extends User {
     private String firstName;
     private String surename;
     private String secondName;
     private Date dateOfBirth;
     private Long groupId;
     transient private List<Contact> contacts;
+    private UserGroup userGroup;
 
-    public Student(String firstName, String surename, String secondName, Date dateOfBirth, Long groupId) {
-        this.firstName = firstName;
+    {
+        userGroup = UserGroup.STUDENT;
+    }
+
+    public Student(String surename, String firstName, String secondName, Date dateOfBirth, Long groupId) {
+        super(surename, "");
         this.surename = surename;
+        this.firstName = firstName;
         this.secondName = secondName;
         this.dateOfBirth = dateOfBirth;
         this.groupId = groupId;

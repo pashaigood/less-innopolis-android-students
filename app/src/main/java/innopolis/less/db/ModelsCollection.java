@@ -1,9 +1,5 @@
 package innopolis.less.db;
 
-
-import android.util.Log;
-
-import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,17 +12,11 @@ import innopolis.less.db.interfaces.ICollection;
 public class ModelsCollection<T extends Model> extends ByteSerializer<T> implements ICollection {
     private Class modelClass;
 
-    private void setClass(Model model) {
-        if (modelClass == null) {
-            modelClass = model.getClass();
-        }
-    }
-
     @Override
     public void create(Model object) {
-        setClass(object);
         if (! contains(object)) {
             add((T) object);
+            onInsert(object);
         }
     }
 
@@ -45,8 +35,8 @@ public class ModelsCollection<T extends Model> extends ByteSerializer<T> impleme
     }
 
     @Override
-    public List<T> find(SearchModel searchModel) {
-        ArrayList<T> result = new ArrayList<>();
+    public ModelsCollection<T> find(SearchModel searchModel) {
+        ModelsCollection<T> result = new ModelsCollection<>();
         Field[] searchFields = searchModel.getClass().getDeclaredFields();
         Iterator<T> iterator = this.iterator();
         T model;
@@ -63,12 +53,12 @@ public class ModelsCollection<T extends Model> extends ByteSerializer<T> impleme
                 searchField.setAccessible(true);
                 Field modelField;
                 try {
-                    modelField = modelClass.getDeclaredField(searchField.getName());
+                    modelField = model.getClass().getDeclaredField(searchField.getName());
                     if (! isFieldsEquals(modelField, model, searchField, searchModel)) {
                         continue search;
                     }
                 } catch (NoSuchFieldException e) {
-                    // e.printStackTrace();
+//                     e.printStackTrace();
                     // If don't has a field, go to next model.
                     continue search;
                 }
@@ -103,6 +93,7 @@ public class ModelsCollection<T extends Model> extends ByteSerializer<T> impleme
         int index  = indexOf(object);
         remove(index);
         add(index, (T) object);
+        onInsert(object);
     }
 
     @Override
@@ -115,5 +106,6 @@ public class ModelsCollection<T extends Model> extends ByteSerializer<T> impleme
         return super.size();
     }
 
-
+    @Override
+    public void onInsert(Model object) {}
 }

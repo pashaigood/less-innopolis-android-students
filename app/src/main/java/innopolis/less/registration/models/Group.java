@@ -4,7 +4,8 @@ import java.util.List;
 
 import innopolis.less.db.Model;
 import innopolis.less.db.SearchModel;
-import innopolis.less.registration.collections.Students;
+import innopolis.less.registration.collections.Users;
+import innopolis.less.registration.constants.UserGroup;
 
 public class Group extends Model {
     private String name;
@@ -22,8 +23,9 @@ public class Group extends Model {
     }
 
     public List<Student> getStudents() {
-        return Students.getInstance().find(new SearchModel() {
+        return (List<Student>)(List<?>) Users.getInstance().find(new SearchModel() {
             Long groupId = Group.this.getId();
+            UserGroup userGroup = UserGroup.STUDENT;
         });
     }
 }

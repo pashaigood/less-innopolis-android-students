@@ -14,4 +14,5 @@ public interface ICollection<T extends Model> {
     void delete(T object);
     int count();
     void clear();
+    void onInsert(T object);
 }
