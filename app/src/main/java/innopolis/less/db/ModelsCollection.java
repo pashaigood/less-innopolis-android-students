@@ -60,6 +60,7 @@ public class ModelsCollection<T extends Model> extends ByteSerializer<T> impleme
                         continue;
                 }
 
+                searchField.setAccessible(true);
                 Field modelField;
                 try {
                     modelField = modelClass.getDeclaredField(searchField.getName());
@@ -81,8 +82,8 @@ public class ModelsCollection<T extends Model> extends ByteSerializer<T> impleme
 
     private boolean isFieldsEquals(Field modelField, Object model, Field searchField, Object searchModel) {
         boolean result = false;
-            try {
-                if (! modelField.isAccessible()) {
+        try {
+            if (! modelField.isAccessible()) {
                 modelField.setAccessible(true);
                 result = searchField.get(searchModel).equals(modelField.get(model));
                 modelField.setAccessible(false);
