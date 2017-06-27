@@ -10,4 +10,6 @@
     <string name="confirm">Confirm</string>
     <string name="title_activity_students">Students</string>
     <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_admin">Administration</string>
+    <string name="title_activity_journal">Journal</string>
 </resources>

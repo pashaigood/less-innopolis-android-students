@@ -21,19 +21,29 @@
         <activity
             android:name=".activites.RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:parentActivityName=".activites.LoginActivity"></activity>
+            android:parentActivityName=".activites.LoginActivity" />
         <activity
             android:name=".activites.LoginActivity"
             android:label="@string/title_activity_login"
-            android:noHistory="true"></activity>
+            android:noHistory="true" />
         <activity
             android:name=".activites.GroupsActivity"
-            android:label="@string/title_activity_groups"></activity>
+            android:label="@string/title_activity_groups" />
         <activity
             android:name=".activites.StudentActivity"
             android:label="@string/title_activity_student"
-            android:parentActivityName=".activites.GroupsActivity"></activity>
-        <activity android:name=".activites.AdminActivity"></activity>
+            android:parentActivityName=".activites.GroupsActivity" />
+        <activity
+            android:name=".activites.AdminActivity"
+            android:label="@string/title_activity_admin" />
+        <activity
+            android:parentActivityName=".activites.AdminActivity"
+            android:name=".activites.AdminStudentsActivity"
+            android:launchMode="singleTask"/>
+        <activity
+            android:parentActivityName=".activites.AdminActivity"
+            android:name=".activites.AdminGroupsActivity"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>

@@ -8,34 +8,34 @@ import java.util.List;
 import innopolis.less.registration.constants.UserGroup;
 
 public class Student extends User {
-    private String firstName;
     private String surename;
-    private String secondName;
+    private String name;
+    private String patronymic;
     private Date dateOfBirth;
     private Long groupId;
+    private int photo = 0;
     transient private List<Contact> contacts;
-    private UserGroup userGroup;
 
     {
-        userGroup = UserGroup.STUDENT;
-    }
-
-    public Student(String surename, String firstName, String secondName, Date dateOfBirth, Long groupId) {
-        super(surename, "");
-        this.surename = surename;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.dateOfBirth = dateOfBirth;
-        this.groupId = groupId;
+        setUserGroup(UserGroup.STUDENT);
         this.contacts = new ArrayList<>();
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Student(String surename, String name, String patronymic, Date dateOfBirth, Long groupId) {
+        super(surename, "");
+        this.surename = surename;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
+        this.groupId = groupId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSurename() {
@@ -46,12 +46,12 @@ public class Student extends User {
         this.surename = surename;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getPatronymic() {
+        return patronymic;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public Date getDateOfBirth() {
@@ -72,5 +72,21 @@ public class Student extends User {
 
     public List<Contact> getContacts() {
         return contacts;
+    }
+
+    public String getFullName() {
+        return String.format("%s %s %s", surename, name, patronymic).trim();
+    }
+
+    public int getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(int photo) {
+        this.photo = photo;
+    }
+
+    public boolean hashPhoto() {
+        return photo != 0;
     }
 }

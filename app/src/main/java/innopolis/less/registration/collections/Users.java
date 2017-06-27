@@ -1,11 +1,16 @@
 package innopolis.less.registration.collections;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import innopolis.less.db.ModelsCollection;
+import innopolis.less.db.SearchModel;
+import innopolis.less.registration.constants.UserGroup;
+import innopolis.less.registration.models.Student;
 import innopolis.less.registration.models.User;
 
 public class Users extends ModelsCollection<User> {
+    private static User authorized;
     private static Users ourInstance = new Users();
     public static Users getInstance() {
         return ourInstance;
@@ -16,21 +21,23 @@ public class Users extends ModelsCollection<User> {
     }
 
     private static HashMap<String, String> collection = new HashMap<>();
-    private static boolean isAuthorized = false;
 
     static {
-        register("admin", "admin");
+        User admin = new User("admin", "admin");
+        admin.setUserGroup(UserGroup.ADMIN);
+        register(admin);
     }
 
     public static boolean isAuthorized() {
-        return isAuthorized;
+        return authorized != null;
     }
 
     public static boolean auth(String login, String password) {
         if (collection.containsKey(login) && collection.get(login).equals(password)) {
-            isAuthorized = true;
+            authorized = getInstance().getByLogin(login);
+            return true;
         }
-        return isAuthorized;
+        return false;
     }
 
     public static void register(String login, String password) {
@@ -48,7 +55,28 @@ public class Users extends ModelsCollection<User> {
         getInstance().create(user);
     }
 
-    public static boolean checkCredentials(String login, String password, String confim) {
-       return password.equals(confim);
+    public static boolean checkCredentials(String login, String password, String confirm) {
+       return password.equals(confirm);
+    }
+
+    public static User getCurrent() {
+        return authorized;
+    }
+
+    public User getByLogin(String login) {
+        Iterator<User> users = getInstance().iterator();
+        User user;
+        while (users.hasNext()) {
+            user = users.next();
+            if (user.getLogin().equals(login)) return user;
+        }
+
+        return null;
+    }
+
+    public ModelsCollection<Student> getStudents() {
+        return (ModelsCollection<Student>)(ModelsCollection<?>) find(new SearchModel() {
+            UserGroup userGroup = UserGroup.STUDENT;
+        });
     }
 }

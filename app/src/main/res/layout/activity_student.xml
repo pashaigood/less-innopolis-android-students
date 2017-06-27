@@ -23,16 +23,19 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/surename"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Surename"
                 android:text="Belugin" />
             <EditText
+                android:id="@+id/name"
                 android:hint="Name"
                 android:text="Pavel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <EditText
+                android:id="@+id/patronymic"
                 android:hint="Patronymic"
                 android:text="Andreevich"
                 android:layout_width="match_parent"
@@ -72,8 +75,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/photo"
+                android:tint="@color/colorGrayDark"
                 android:scaleType="fitCenter"
-                android:src="@drawable/pbelugin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </FrameLayout>

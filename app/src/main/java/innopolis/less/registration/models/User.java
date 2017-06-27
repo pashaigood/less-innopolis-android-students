@@ -6,11 +6,7 @@ import innopolis.less.registration.constants.UserGroup;
 public class User extends Model {
     private String login;
     private String password;
-    protected UserGroup userGroup;
-
-    {
-        userGroup = UserGroup.VIEWER;
-    }
+    protected UserGroup userGroup = UserGroup.VIEWER;
 
     public User(String login, String password) {
         this.login = login;

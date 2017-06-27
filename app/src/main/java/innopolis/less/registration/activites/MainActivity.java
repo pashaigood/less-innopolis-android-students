@@ -34,7 +34,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void start() {
-        startActivity(new Intent(this, GroupsActivity.class));
+        switch (Users.getCurrent().getUserGroup()) {
+            case ADMIN: {
+                startActivity(new Intent(this, AdminActivity.class));
+                break;
+            }
+            default: {
+                startActivity(new Intent(this, GroupsActivity.class));
+            }
+        }
     }
 
     private void showLogin() {
