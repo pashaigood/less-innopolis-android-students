@@ -4,6 +4,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +13,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ListView;
+import android.widget.TextView;
+
 
 import innopolis.less.db.ModelsCollection;
 import innopolis.less.registration.R;
 import innopolis.less.registration.activites.StudentActivity;
+import innopolis.less.registration.adapters.RecycleListAdapter;
 import innopolis.less.registration.collections.Users;
 import innopolis.less.registration.models.Student;
 
 
 public class StudentsFragment extends Fragment implements Filterable {
     private View view;
-    private ArrayAdapter<Student> itemsAdapter;
+    private RecycleListAdapter<Student> recycleListAdapter;
 
 
     public StudentsFragment() {
@@ -31,19 +35,7 @@ public class StudentsFragment extends Fragment implements Filterable {
 
     public static StudentsFragment newInstance() {
         StudentsFragment fragment = new StudentsFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            /*mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);*/
-        }
-
     }
 
     @Override
@@ -56,35 +48,33 @@ public class StudentsFragment extends Fragment implements Filterable {
     }
 
     protected void initList() {
+        RecyclerView itemsList = view.findViewById(R.id.list_item);
+
         final Context context = getActivity();
         final ModelsCollection<Student> students = Users.getInstance().getStudents();
-        int size = students.size();
-        String[] items = new String[size];
+        recycleListAdapter = new RecycleListAdapter<Student>(students, android.R.layout.simple_expandable_list_item_1) {
+            @Override
+            public void onItemCreateView(View view, Student student) {
+                TextView text = view.findViewById(android.R.id.text1);
+                text.setText(student.getFullName());
+            }
+        };
 
-        int i = 0;
-        for (Student student: students.toArray(new Student[size])) {
-            items[i++] = student.getFullName();
-        }
-
-        itemsAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_expandable_list_item_1,
-                students.toArray(new Student[size])
-        );
-        ListView itemsList = view.findViewById(R.id.list_item);
-        itemsList.setAdapter(itemsAdapter);
-        itemsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recycleListAdapter.onItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Student student = recycleListAdapter.getItem(i);
                 Intent studentIntend = new Intent(context, StudentActivity.class);
-                studentIntend.putExtra("id", itemsAdapter.getItem(i).getId());
+                studentIntend.putExtra("id", student.getId());
                 startActivity(studentIntend);
             }
         });
+        itemsList.setAdapter(recycleListAdapter);
+        itemsList.setLayoutManager(new LinearLayoutManager(context));
     }
 
     @Override
     public Filter getFilter() {
-        return itemsAdapter.getFilter();
+        return recycleListAdapter.getFilter();
     }
 }

@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Filterable;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import innopolis.less.registration.R;
@@ -70,14 +68,12 @@ public class AdminListActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         System.out.println("restore");
-        System.out.println(savedInstanceState.getString("filter"));
         super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         System.out.println("save");
-        outState.putString("filter", searchField.getText().toString());
         super.onSaveInstanceState(outState);
     }
 }

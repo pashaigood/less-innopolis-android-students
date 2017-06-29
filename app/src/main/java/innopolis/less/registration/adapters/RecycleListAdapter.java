@@ -8,36 +8,36 @@ import android.widget.AdapterView;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-
-import innopolis.less.registration.abstractions.RecycleHolder;
-
-public class RecycleListAdapter<T> extends RecyclerView.Adapter implements Filterable {
+public abstract class RecycleListAdapter<T> extends RecyclerView.Adapter implements Filterable {
     private List<T> filteredItems;
     private List<T> items;
-    private RecycleHolder viewHolder;
     private int layout;
     private AdapterView.OnItemClickListener itemClickListener;
 
 
-    public RecycleListAdapter(List<T> items, int layout, RecycleHolder viewHolder) {
+    public RecycleListAdapter(List<T> items, int layout) {
         this.items = items;
         this.filteredItems = items;
         this.layout = layout;
-        this.viewHolder = viewHolder;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
-        ViewHolder<T> holder = new ViewHolder<>(v);
-        holder.setHolder(viewHolder);
+        ViewHolder holder = new ViewHolder(v);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ((ViewHolder) holder).bind(filteredItems.get(position));
+    }
+
+    public T getItem(int position) {
+        return filteredItems.get(position);
     }
 
     @Override
@@ -49,6 +49,26 @@ public class RecycleListAdapter<T> extends RecyclerView.Adapter implements Filte
         this.itemClickListener = clickListener;
     }
 
+    public abstract void onItemCreateView(View view, T object);
+
+    public List<T> onFilter(CharSequence charSequence, List<T> items) {
+        List<T> result = new ArrayList<>();
+
+        Iterator<T> iterator = items.iterator();
+        T object;
+        while (iterator.hasNext()) {
+            object = iterator.next();
+            if (onFilter(charSequence, object)) {
+                result.add(object);
+            }
+        }
+
+        return result;
+    }
+
+    public boolean onFilter(CharSequence charSequence, T object) {
+        return object.toString().contains(charSequence);
+    }
 
     @Override
     public Filter getFilter() {
@@ -56,7 +76,7 @@ public class RecycleListAdapter<T> extends RecyclerView.Adapter implements Filte
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 final FilterResults results = new FilterResults();
-                filteredItems = viewHolder.filter(charSequence, items);
+                filteredItems = onFilter(charSequence, items);
                 results.values = filteredItems;
                 results.count = filteredItems.size();
                 return results;
@@ -69,8 +89,7 @@ public class RecycleListAdapter<T> extends RecyclerView.Adapter implements Filte
         };
     }
 
-    private class ViewHolder<T> extends RecyclerView.ViewHolder {
-        private RecycleHolder holder;
+    private class ViewHolder extends RecyclerView.ViewHolder {
         private View itemView;
 
         public ViewHolder(View itemView) {
@@ -84,12 +103,8 @@ public class RecycleListAdapter<T> extends RecyclerView.Adapter implements Filte
             });
         }
 
-        public void setHolder(RecycleHolder holder) {
-            this.holder = holder;
-        }
-
         public void bind(T object) {
-            holder.bind(itemView, object);
+            onItemCreateView(itemView, object);
         }
     }
 }

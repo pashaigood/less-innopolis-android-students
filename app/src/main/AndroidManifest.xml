@@ -35,6 +35,7 @@
             android:parentActivityName=".activites.GroupsActivity" />
         <activity
             android:name=".activites.AdminActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_admin" />
         <activity
             android:parentActivityName=".activites.AdminActivity"

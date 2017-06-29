@@ -46,17 +46,6 @@ public class AdminActivity extends AppCompatActivity {
                 Intent intent = new Intent(AdminActivity.this, AdminListActivity.class);
                 intent.putExtra("fragment", className);
                 startActivity(intent);
-
-                /*Class<?> classObject = null;
-                if(className != null) {
-                    try {
-                        classObject = Class.forName(String.format("innopolis.less.registration.activites.Admin%sActivity", className));
-
-                    } catch (ClassNotFoundException e) {
-                        // TODO Auto-generated catch block
-                        Toast.makeText(AdminActivity.this, String.format("Sorry, can't find interface for %s", className.toLowerCase()), Toast.LENGTH_SHORT).show();
-                    }
-                }*/
             }
         });
     }
