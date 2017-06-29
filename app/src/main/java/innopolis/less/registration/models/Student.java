@@ -89,4 +89,9 @@ public class Student extends User {
     public boolean hashPhoto() {
         return photo != 0;
     }
+
+    @Override
+    public String toString() {
+        return getFullName();
+    }
 }

@@ -5,18 +5,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import innopolis.less.db.ModelsCollection;
 import innopolis.less.registration.R;
-import innopolis.less.registration.abstractions.AdminListActivity;
 import innopolis.less.registration.collections.Groups;
-import innopolis.less.registration.collections.Users;
 import innopolis.less.registration.models.Group;
-import innopolis.less.registration.models.Student;
 
 public class AdminGroupsActivity extends AdminListActivity {
 
     protected void initList() {
-        int size = Groups.getInstance().size();
+        /*int size = Groups.getInstance().size();
         Group[] groups = Groups.getInstance().toArray(new Group[size]);
         String[] items = new String[size];
 
@@ -36,6 +32,6 @@ public class AdminGroupsActivity extends AdminListActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
             }
-        });
+        });*/
     }
 }

@@ -41,27 +41,26 @@ public class AdminActivity extends AppCompatActivity {
         entitiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println();
                 String className = entities[i];
 
-                Class<?> classObject = null;
+                Intent intent = new Intent(AdminActivity.this, AdminListActivity.class);
+                intent.putExtra("fragment", className);
+                startActivity(intent);
+
+                /*Class<?> classObject = null;
                 if(className != null) {
                     try {
                         classObject = Class.forName(String.format("innopolis.less.registration.activites.Admin%sActivity", className));
 
-                        Intent intent = new Intent(AdminActivity.this, classObject);
-                        startActivity(intent);
                     } catch (ClassNotFoundException e) {
                         // TODO Auto-generated catch block
                         Toast.makeText(AdminActivity.this, String.format("Sorry, can't find interface for %s", className.toLowerCase()), Toast.LENGTH_SHORT).show();
                     }
-                }
+                }*/
             }
         });
     }
 
     @Override
-    public void onBackPressed() {
-
-    }
+    public void onBackPressed() {}
 }
